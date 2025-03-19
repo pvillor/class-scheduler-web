@@ -1,10 +1,4 @@
-import {
-  Calendar,
-  CalendarPlus,
-  ClipboardList,
-  Home,
-  UserPlus,
-} from 'lucide-react'
+import { Calendar, CalendarClock, CalendarPlus, UserPlus } from 'lucide-react'
 import { Separator } from './ui/separator'
 import { NavLink } from './nav-link'
 import { ThemeToggle } from './theme/theme-toggle'
@@ -20,8 +14,13 @@ export function Header() {
 
         <nav className="flex items-center space-x-4 lg:space-x-6">
           <NavLink to="/">
-            <Home className="h-4 w-4" />
-            Início
+            <CalendarClock className="h-4 w-4" />
+            Agendamentos
+          </NavLink>
+
+          <NavLink to="/create-schedule">
+            <CalendarPlus className="h-4 w-4" />
+            Novo agendamento
           </NavLink>
 
           <NavLink to="/sign-up">
@@ -32,16 +31,6 @@ export function Header() {
           <NavLink to="/sign-up">
             <UserPlus className="h-4 w-4" />
             Novo professor
-          </NavLink>
-
-          <NavLink to="/create-schedule">
-            <CalendarPlus className="h-4 w-4" />
-            Novo agendamento
-          </NavLink>
-
-          <NavLink to="/schedules">
-            <ClipboardList className="h-4 w-4" />
-            Agendamentos
           </NavLink>
         </nav>
 
