@@ -8,9 +8,21 @@ import {
 import { Helmet } from 'react-helmet-async'
 import { ScheduleTableRow } from './schedule-table-row'
 import { ScheduleTableFilters } from './schedule-table-filters'
-import { Pagination } from '@/components/pagination'
+import { fetchSchedules } from '@/api/fetch-schedules'
+import { useQuery } from '@tanstack/react-query'
 
 export function Schedules() {
+  const { data } = useQuery({
+    queryFn: fetchSchedules,
+    queryKey: ['schedules'],
+  })
+
+  if (!data) {
+    return null
+  }
+
+  const { schedules } = data
+
   return (
     <>
       <Helmet title="Agendamentos" />
@@ -25,8 +37,8 @@ export function Schedules() {
               <TableHeader>
                 <TableRow>
                   <TableHead className="w-[64px]" />
-                  <TableHead>Nome</TableHead>
-                  <TableHead className="w-[320px]">E-mail</TableHead>
+                  <TableHead>Aluno</TableHead>
+                  <TableHead className="w-[320px]">Professor</TableHead>
                   <TableHead className="w-[400px]">Agendado para</TableHead>
                   <TableHead className="w-[164px]" />
                   <TableHead className="w-[132px]" />
@@ -34,14 +46,17 @@ export function Schedules() {
               </TableHeader>
 
               <TableBody>
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <ScheduleTableRow key={index} />
+                {schedules.map(schedule => (
+                  <ScheduleTableRow
+                    key={schedule.id}
+                    name={schedule.studentId}
+                    email={schedule.teacherId}
+                    date={schedule.scheduledAt}
+                  />
                 ))}
               </TableBody>
             </Table>
           </div>
-
-          <Pagination pageIndex={0} totalCount={105} perPage={10} />
         </div>
       </div>
     </>

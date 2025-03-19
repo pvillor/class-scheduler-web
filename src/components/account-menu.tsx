@@ -9,19 +9,18 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from './ui/dropdown-menu'
-import { useMutation, useQuery } from '@tanstack/react-query'
-import { getProfile } from '@/api/get-profile'
+import { useMutation } from '@tanstack/react-query'
+import type { GetProfileResponse } from '@/api/get-profile'
 import { signOut } from '@/api/sign-out'
 import { toast } from 'sonner'
 import { useNavigate } from 'react-router-dom'
 
-export function AccountMenu() {
-  const navigate = useNavigate()
+interface AccountMenuProps {
+  profile: GetProfileResponse
+}
 
-  const { data: profile } = useQuery({
-    queryKey: ['profile'],
-    queryFn: getProfile,
-  })
+export function AccountMenu({ profile }: AccountMenuProps) {
+  const navigate = useNavigate()
 
   const { mutateAsync: signOutFn, isPending: isSigningOut } = useMutation({
     mutationFn: signOut,

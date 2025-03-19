@@ -16,7 +16,7 @@ export function ScheduleTableFilters() {
       <Input placeholder="Nome do aluno" className="h-8 w-[320px]" />
       <Input placeholder="Nome do professor" className="h-8 w-[320px]" />
 
-      <Select defaultValue="all">
+      {/* <Select defaultValue="all">
         <SelectTrigger className="h-8 w-[180px]">
           <SelectValue />
         </SelectTrigger>
@@ -28,7 +28,7 @@ export function ScheduleTableFilters() {
           <SelectItem value="confirmed">Confirmado</SelectItem>
           <SelectItem value="finished">Concluído</SelectItem>
         </SelectContent>
-      </Select>
+      </Select> */}
 
       <Button type="submit" variant="secondary" size="xs">
         <Search className="mr-2 h-4 w-4" />
