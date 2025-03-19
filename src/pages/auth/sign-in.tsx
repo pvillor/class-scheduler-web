@@ -1,6 +1,8 @@
+import { signIn } from '@/api/sign-in'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
@@ -21,10 +23,18 @@ export function SignIn() {
     formState: { isSubmitting },
   } = useForm<SignInForm>()
 
-  async function handleSignIn({ email, password }: SignInForm) {
-    console.log(email, password)
+  const { mutateAsync: authenticate } = useMutation({
+    mutationFn: signIn,
+  })
 
-    toast.success('Login realizado com sucesso!')
+  async function handleSignIn({ email, password }: SignInForm) {
+    try {
+      await authenticate({ email, password })
+
+      toast.success('Login realizado com sucesso!')
+    } catch (error) {
+      toast.error('Credenciais inválidas.')
+    }
   }
 
   return (
