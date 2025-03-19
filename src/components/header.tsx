@@ -39,9 +39,9 @@ export function Header() {
             Novo agendamento
           </NavLink>
 
-          <NavLink to="/report">
+          <NavLink to="/schedules">
             <ClipboardList className="h-4 w-4" />
-            Relatório
+            Agendamentos
           </NavLink>
         </nav>
 
