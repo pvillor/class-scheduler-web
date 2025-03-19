@@ -1,16 +1,11 @@
 import { Button } from '@/components/ui/button'
 import { TableRow, TableCell } from '@/components/ui/table'
-import { Search, ArrowRight, X } from 'lucide-react'
+import { ArrowRight, X } from 'lucide-react'
 
 export function ScheduleTableRow() {
   return (
     <TableRow>
-      <TableCell>
-        <Button variant="outline" size="xs">
-          <Search className="h-3 w-3" />
-          <span className="sr-only">Detalhes do agendamento</span>
-        </Button>
-      </TableCell>
+      <TableCell />
 
       <TableCell className="font-mono text-sm font-medium">John Doe</TableCell>
       <TableCell>john.doe@example.com</TableCell>
