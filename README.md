@@ -5,7 +5,8 @@
     npm install
   ```
 
-### Variáveis de ambiente
+### Variáveis de ambiente 
+(enviei o arquivo .env para o repositório pelo fato de ele ter somente uma variável local, então não precisa criar e adicionar o conteúdo)
 - Crie um arquivo na raiz com o nome ".env" e coloque no conteúdo dele:
    ```
     VITE_API_URL="http://localhost:3333"
@@ -14,7 +15,7 @@
 
 ### Rodar o site
 ```
-  pnpm run dev
+  npm run dev
 ```
 
 ## Stack
